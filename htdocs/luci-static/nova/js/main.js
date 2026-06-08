@@ -111,10 +111,24 @@
       initSidebarToggle();
       initSubmenus();
       addThemeToggle();
+      markLoginLayout();
     });
   } else {
     initSidebarToggle();
     initSubmenus();
     addThemeToggle();
+    markLoginLayout();
+  }
+
+  function markLoginLayout() {
+    var pageAttr = (document.body.getAttribute('data-page') || '').trim();
+    var hasPasswordField = !!document.querySelector('input[type="password"]');
+    var mainForm = document.querySelector('#maincontent form');
+    var hasMenu = !!document.getElementById('modemenu')?.querySelector('a');
+
+    var dominatedByLoginForm = hasPasswordField && (!hasMenu || (mainForm && mainForm.action && mainForm.action.indexOf('/cgi-bin/luci') !== -1));
+    var isLogin = (pageAttr === 'admin') || dominatedByLoginForm;
+
+    document.body.classList.toggle('login-page', isLogin);
   }
 })();

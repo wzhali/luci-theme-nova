@@ -152,8 +152,8 @@ body::before {
   bottom: 0;
   width: var(--nav-width);
   background: var(--nav-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-right: 1px solid rgba(255,255,255,0.06);
   display: flex;
   flex-direction: column;
@@ -670,17 +670,27 @@ input[type="reset"] {
 }
 
 /* ── 模态对话框 ── */
-.modal {
+/* 默认隐藏模态容器与遮罩，避免登录页被不可见 overlay 挡住点击 */
+.modal,
+#modal_overlay,
+#modal_overlay:has(> .modal:empty) {
+  display: none !important;
+  pointer-events: none !important;
+}
+.modal:not(:empty),
+#modal_overlay.active {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 1000;
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.40);
+  pointer-events: auto !important;
+  visibility: visible !important;
 }
 .modal .modal-inner {
   background: var(--surface);
@@ -707,51 +717,104 @@ input[type="reset"] {
 }
 
 /* ── 登录页 ── */
-body.login-page {
+body.login-page,
+body[data-page="admin"] {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  background: #f7fafc;
+  background-attachment: fixed;
 }
-body.login-page #maincontent {
-  max-width: 400px;
+body.login-page #menubar,
+body[data-page="admin"] #menubar,
+body.login-page #toggle-sidebar,
+body[data-page="admin"] #toggle-sidebar {
+  display: none;
+}
+body.login-page::before,
+body[data-page="admin"]::before {
+  opacity: 0;
+  background: none;
+  animation: none;
+  pointer-events: none;
+  visibility: hidden;
+}
+body.login-page #maincontainer,
+body[data-page="admin"] #maincontainer {
+  margin-left: 0;
+  padding-top: 0;
+}
+body.login-page #maincontent,
+body[data-page="admin"] #maincontent {
+  max-width: 420px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
+  pointer-events: auto;
 }
-body.login-page .cbi-section {
-  background: var(--surface);
-  padding: 32px;
+body.login-page .cbi-section,
+body[data-page="admin"] .cbi-section {
+  background: #ffffff;
+  padding: 28px 24px 24px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: var(--radius-lg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
-body.login-page .cbi-section h2 {
+body.login-page .cbi-section h2,
+body[data-page="admin"] .cbi-section h2 {
   border-bottom: none;
   margin-bottom: 8px;
   font-size: var(--font-size-xl);
 }
-body.login-page .cbi-section p {
+body.login-page .cbi-section p,
+body[data-page="admin"] .cbi-section p {
   color: var(--text-secondary);
   margin-bottom: 20px;
   font-size: var(--font-size-sm);
 }
-body.login-page .cbi-value {
+body.login-page .cbi-value,
+body[data-page="admin"] .cbi-value {
   flex-direction: column;
   text-align: left;
+  gap: 6px;
 }
-body.login-page .cbi-value-title {
+body.login-page .cbi-value-title,
+body[data-page="admin"] .cbi-value-title {
   width: 100%;
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  color: var(--text-primary);
 }
-body.login-page input {
+body.login-page input,
+body[data-page="admin"] input {
+  width: 100%;
   max-width: 100%;
 }
-body.login-page .cbi-page-actions {
+body.login-page .cbi-page-actions,
+body[data-page="admin"] .cbi-page-actions {
   margin-top: 16px;
 }
-body.login-page .cbi-page-actions .btn {
+body.login-page .cbi-page-actions .btn,
+body[data-page="admin"] .cbi-page-actions .btn {
   width: 100%;
 }
-body.login-page .alert-message {
+body.login-page .alert-message,
+body[data-page="admin"] .alert-message {
   text-align: left;
+}
+
+[data-theme="dark"] body.login-page,
+[data-theme="dark"] body[data-page="admin"] {
+  background: #0b1120;
+}
+[data-theme="dark"] body.login-page .cbi-section,
+[data-theme="dark"] body[data-page="admin"] .cbi-section {
+  background: #111827;
+  border-color: rgba(148, 163, 184, 0.14);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
 }
 
 /* ── 系统日志 / 代码块 ── */
