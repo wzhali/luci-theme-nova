@@ -760,8 +760,9 @@ body[data-page="admin"] #maincontainer {
   margin-right: auto;
   padding: 0;
   width: 100%;
-  max-width: calc(var(--login-card-width) + 40px);
+  max-width: var(--login-card-width);
   flex: none;
+  gap: 0;
 }
 body.login-page #maincontent,
 body[data-page="admin"] #maincontent {
@@ -774,18 +775,24 @@ body[data-page="admin"] #maincontent {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: none;
+}
+body.login-page #mainmenu,
+body[data-page="admin"] #mainmenu {
+  display: none;
 }
 body.login-page #footer,
 body[data-page="admin"] #footer {
   margin-left: auto;
   margin-right: auto;
-  padding: 0;
+  padding: 10px 0;
   width: 100%;
   max-width: var(--login-card-width);
   text-align: center;
   border-top: none;
   background: transparent;
   color: var(--text-muted);
+  box-sizing: border-box;
 }
 body.login-page .cbi-section,
 body[data-page="admin"] .cbi-section {
