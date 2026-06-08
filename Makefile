@@ -36,6 +36,9 @@ define Package/luci-theme-nova/postrm
 }
 endef
 
+# Install paths (LuCI 25.12+):
+#   CSS/JS:  /www/luci-static/nova/
+#   Templates: /usr/share/ucode/luci/template/themes/nova/
 include ../../luci.mk
 
 # call BuildPackage - OpenWRT buildroot signature

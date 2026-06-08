@@ -24,7 +24,7 @@ luci-theme-nova/
 │   └── spinner.svg                       # 加载动画
 ├── htdocs/luci-static/resources/
 │   └── menu-nova.js                      # 菜单渲染
-├── ucode/template/themes/nova/
+├── ucode/template/themes/nova/   → 部署到 /usr/share/ucode/luci/template/themes/nova/
 │   ├── header.ut                         # 头部模板
 │   └── footer.ut                         # 页脚模板
 └── root/etc/uci-defaults/
@@ -51,8 +51,10 @@ make package/luci-theme-nova/compile
 scp -r htdocs/luci-static/nova root@192.168.1.1:/www/luci-static/
 
 # 复制模板
-ssh root@192.168.1.1 "mkdir -p /usr/share/luci/ucode/template/themes/nova"
-scp ucode/template/themes/nova/* root@192.168.1.1:/usr/share/luci/ucode/template/themes/nova/
+ssh root@192.168.1.1 "mkdir -p /usr/share/ucode/luci/template/themes/nova"
+# For LuCI 25.12+, templates go to:
+scp ucode/template/themes/nova/* root@192.168.1.1:/usr/share/ucode/luci/template/themes/nova/
+# (Legacy LuCI may use: /usr/share/luci/ucode/template/themes/nova/)
 
 # 切换主题
 ssh root@192.168.1.1 "uci set luci.main.mediaurl=/luci-static/nova && uci commit luci"
