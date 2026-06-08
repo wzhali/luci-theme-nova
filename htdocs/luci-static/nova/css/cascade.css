@@ -21,9 +21,9 @@
   --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
 
   /* Surface — 毛玻璃表面 */
-  --surface:          rgba(255, 255, 255, 0.72);
+  --surface:          rgba(255, 255, 255, 0.96);
   --surface-border:   rgba(148, 163, 184, 0.15);
-  --surface-hover:    rgba(255, 255, 255, 0.88);
+  --surface-hover:    rgba(255, 255, 255, 1.00);
 
   /* Text */
   --text-primary:     #0f172a;
@@ -32,7 +32,7 @@
   --text-inverse:     #ffffff;
 
   /* Navigation — 侧栏 */
-  --nav-bg:           rgba(15, 23, 42, 0.88);
+  --nav-bg:           rgba(15, 23, 42, 0.92);
   --nav-text:         #e2e8f0;
   --nav-hover:        rgba(255, 255, 255, 0.08);
   --nav-active:       linear-gradient(135deg, var(--nova-cyan), var(--nova-blue));
@@ -72,7 +72,7 @@
   --bg-gradient-start: #020617;
   --bg-gradient-end:   #0f172a;
   --bg-gradient: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-  --surface:          rgba(30, 41, 59, 0.70);
+  --surface:          rgba(30, 41, 59, 0.95);
   --surface-border:   rgba(148, 163, 184, 0.10);
   --text-primary:     #f1f5f9;
   --text-secondary:   #94a3b8;
@@ -341,8 +341,6 @@ h2.navigation { display: none; }
 table,
 .cbi-tabcontainer {
   background: var(--surface);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   margin-bottom: 18px;
@@ -607,7 +605,6 @@ input[type="reset"] {
   color: var(--text-muted);
   border-top: 1px solid var(--surface-border);
   background: var(--surface);
-  backdrop-filter: blur(12px);
   text-align: center;
   transition: margin-left var(--transition);
 }
@@ -640,7 +637,6 @@ input[type="reset"] {
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  backdrop-filter: blur(12px);
   padding: 0;
 }
 
@@ -685,11 +681,9 @@ input[type="reset"] {
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.40);
-  backdrop-filter: blur(4px);
 }
 .modal .modal-inner {
   background: var(--surface);
-  backdrop-filter: blur(16px);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
@@ -725,6 +719,7 @@ body.login-page #maincontent {
   padding: 0 20px;
 }
 body.login-page .cbi-section {
+  background: var(--surface);
   padding: 32px;
   text-align: center;
 }
