@@ -13,5 +13,7 @@
 	<p>{{ _('Powered by') }} <a href="https://openwrt.org/" target="_blank" rel="noreferrer">OpenWRT</a> &mdash; {{ _('Theme') }}: Nova</p>
 </div>
 
+<script>L.require('menu-nova')</script>
+
 </body>
 </html>

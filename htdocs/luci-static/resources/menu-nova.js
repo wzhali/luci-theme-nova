@@ -145,6 +145,13 @@ return baseclass.extend({
 		'Static Routes': '\u9759\u6001\u8def\u7531',
 		'Firewall':   '\u9632\u706b\u5899',
 		'Diagnostics': '\u8bca\u65ad',
-		'LED Configuration': 'LED\u914d\u7f6e'
+		'LED Configuration': 'LED\u914d\u7f6e',
+\t\t'Routing': '\u8def\u7531',
+\t\t'DHCP': 'DHCP',
+\t\t'DNS': 'DNS',
+\t\t'Log out': '\u9000\u51fa',
+\t\t'Realtime Graphs': '\u5b9e\u65f6\u56fe\u8868',
+\t\t'Real-Time': '\u5b9e\u65f6',
+\t\t'Traffic': '\u6d41\u91cf'
 	}
 });
