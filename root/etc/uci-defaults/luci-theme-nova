@@ -1,0 +1,19 @@
+#!/bin/sh
+# luci-theme-nova 默认配置
+# 首次安装时注册 Nova 主题
+
+uci -q delete luci.themes.Nova
+uci -q batch <<-EOF
+	set luci.themes.Nova=/luci-static/nova
+	commit luci
+EOF
+
+# 如果当前没有默认主题，则设为 Nova
+if [ -z "$(uci -q get luci.main.mediaurl)" ]; then
+	uci -q batch <<-EOF
+		set luci.main.mediaurl=/luci-static/nova
+		commit luci
+	EOF
+fi
+
+exit 0

@@ -1,0 +1,17 @@
+{#
+ Copyright 2025 OpenWRT contributors
+ Licensed to the public under the Apache License 2.0.
+-#}
+
+	</div> <!-- #maincontent -->
+</div> <!-- #maincontainer -->
+
+<div id="footer">
+	{% if (footerloader): %}
+		<%= include(footerloader) %>
+	{% endif %}
+	<p>{{ _('Powered by') }} <a href="https://openwrt.org/" target="_blank" rel="noreferrer">OpenWRT</a> &mdash; {{ _('Theme') }}: Nova</p>
+</div>
+
+</body>
+</html>

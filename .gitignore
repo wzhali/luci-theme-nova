@@ -1,0 +1,20 @@
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Build artifacts
+*.ipk
+*.apk
+build_dir/
+bin/
+tmp/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-*
+
+# Temp
+*.log
