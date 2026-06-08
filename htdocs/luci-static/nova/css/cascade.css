@@ -37,6 +37,8 @@
   --nav-hover:        rgba(255, 255, 255, 0.08);
   --nav-active:       linear-gradient(135deg, var(--nova-cyan), var(--nova-blue));
   --nav-width:        240px;
+  --login-bg:         #f7fafc;
+  --login-card-width: 420px;
 
   /* Font stack — 中文优先 */
   --font-sans:        'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Hiragino Sans GB', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -600,6 +602,7 @@ input[type="reset"] {
 /* ── 页脚 ── */
 #footer {
   margin-left: var(--nav-width);
+  margin-right: 0;
   padding: 14px 32px;
   font-size: var(--font-size-xs);
   color: var(--text-muted);
@@ -607,6 +610,8 @@ input[type="reset"] {
   background: var(--surface);
   text-align: center;
   transition: margin-left var(--transition);
+  width: calc(100% - var(--nav-width));
+  box-sizing: border-box;
 }
 
 #footer p { line-height: 1.6; }
@@ -720,17 +725,22 @@ input[type="reset"] {
 body.login-page,
 body[data-page="admin"] {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f7fafc;
+  padding: 0 16px;
+  margin: 0;
+  background: var(--login-bg);
   background-attachment: fixed;
 }
 body.login-page #menubar,
 body[data-page="admin"] #menubar,
 body.login-page #toggle-sidebar,
-body[data-page="admin"] #toggle-sidebar {
-  display: none;
+body[data-page="admin"] #toggle-sidebar,
+body.login-page #theme-toggle,
+body[data-page="admin"] #theme-toggle {
+  display: none !important;
 }
 body.login-page::before,
 body[data-page="admin"]::before {
@@ -742,16 +752,40 @@ body[data-page="admin"]::before {
 }
 body.login-page #maincontainer,
 body[data-page="admin"] #maincontainer {
-  margin-left: 0;
-  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 100%;
+  max-width: calc(var(--login-card-width) + 40px);
+  flex: none;
 }
 body.login-page #maincontent,
 body[data-page="admin"] #maincontent {
-  max-width: 420px;
+  max-width: var(--login-card-width);
   width: 100%;
-  margin: 0 auto;
-  padding: 0 20px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
   pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body.login-page #footer,
+body[data-page="admin"] #footer {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  width: 100%;
+  max-width: var(--login-card-width);
+  text-align: center;
+  border-top: none;
+  background: transparent;
+  color: var(--text-muted);
 }
 body.login-page .cbi-section,
 body[data-page="admin"] .cbi-section {
@@ -763,6 +797,17 @@ body[data-page="admin"] .cbi-section {
   border-radius: var(--radius-lg);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+  margin-bottom: 0;
+  pointer-events: auto;
+  width: 100%;
+  max-width: var(--login-card-width);
+  position: relative;
+  z-index: 1;
+}
+body.login-page .cbi-section:hover,
+body[data-page="admin"] .cbi-section:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(15, 23, 42, 0.08);
 }
 body.login-page .cbi-section h2,
 body[data-page="admin"] .cbi-section h2 {
@@ -788,6 +833,10 @@ body[data-page="admin"] .cbi-value-title {
   margin-bottom: 0;
   color: var(--text-primary);
 }
+body.login-page .cbi-section-node,
+body.login-page .cbi-value,
+body[data-page="admin"] .cbi-section-node,
+body[data-page="admin"] .cbi-value,
 body.login-page input,
 body[data-page="admin"] input {
   width: 100%;
@@ -808,7 +857,7 @@ body[data-page="admin"] .alert-message {
 
 [data-theme="dark"] body.login-page,
 [data-theme="dark"] body[data-page="admin"] {
-  background: #0b1120;
+  background: var(--login-bg);
 }
 [data-theme="dark"] body.login-page .cbi-section,
 [data-theme="dark"] body[data-page="admin"] .cbi-section {
@@ -914,4 +963,8 @@ code {
   font-size: var(--font-size-xs);
   cursor: help;
   margin-left: 4px;
+}
+body.login-page form,
+body[data-page="admin"] form {
+  width: 100%;
 }
