@@ -38,7 +38,7 @@
   --nav-active:       linear-gradient(135deg, var(--nova-cyan), var(--nova-blue));
   --nav-width:        240px;
   --login-bg:         #f7fafc;
-  --login-card-width: 420px;
+  --login-card-width: 380px;
 
   /* Font stack — 中文优先 */
   --font-sans:        'PingFang SC', 'Noto Sans SC', 'Microsoft YaHei', 'Hiragino Sans GB', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -757,6 +757,7 @@ input[type="reset"] {
   .cbi-value { flex-direction: column; }
   .cbi-value-title { width: 100%; margin-bottom: 3px; }
   input, select, textarea { max-width: 100%; }
+  body.login-page input, body[data-page="admin"] input { max-width: 320px; }
   table { display: block; overflow-x: auto; }
 }
 
@@ -887,9 +888,9 @@ body.login-page #footer,
 body[data-page="admin"] #footer {
   margin-left: auto;
   margin-right: auto;
-  padding: 10px 0;
+  padding: 16px 0 10px;
   width: 100%;
-  max-width: var(--login-card-width);
+  max-width: 380px;
   text-align: center;
   border-top: none;
   background: transparent;
@@ -899,7 +900,7 @@ body[data-page="admin"] #footer {
 body.login-page .cbi-section,
 body[data-page="admin"] .cbi-section {
   background: #ffffff;
-  padding: 28px 24px 24px;
+  padding: 32px 28px 28px;
   text-align: center;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(15, 23, 42, 0.08);
@@ -945,11 +946,22 @@ body[data-page="admin"] .cbi-value-title {
 body.login-page .cbi-section-node,
 body.login-page .cbi-value,
 body[data-page="admin"] .cbi-section-node,
-body[data-page="admin"] .cbi-value,
+body[data-page="admin"] .cbi-value {
+  width: 100%;
+  max-width: 100%;
+}
 body.login-page input,
 body[data-page="admin"] input {
   width: 100%;
-  max-width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  display: block;
+}
+body.login-page .cbi-input-text,
+body.login-page .cbi-input-password,
+body[data-page="admin"] .cbi-input-text,
+body[data-page="admin"] .cbi-input-password {
+  max-width: 320px;
 }
 body.login-page .cbi-page-actions,
 body[data-page="admin"] .cbi-page-actions {
