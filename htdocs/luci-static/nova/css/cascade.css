@@ -134,6 +134,7 @@ body::before {
   animation: aurora-drift 25s ease-in-out infinite alternate;
   z-index: -1;
   pointer-events: none;
+  will-change: transform;
 }
 
 @keyframes aurora-drift {
@@ -145,6 +146,14 @@ body::before {
 }
 
 .skiplink { position: absolute; left: -9999px; }
+
+/* ── Badge 工具 ── */
+.badge {
+  display: inline-flex; padding: 2px 8px; border-radius: 4px;
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+}
+.badge.up { background: rgba(16,185,129,0.12); color: #10b981; }
+.badge.down { background: rgba(239,68,68,0.12); color: #ef4444; }
 
 /* ── 侧边栏导航 ── */
 #menubar {
@@ -248,7 +257,7 @@ body::before {
   padding: 10px 12px;
   border-radius: var(--radius-sm);
   color: var(--nav-text);
-  font-size: var(--font-size);
+  font-size: var(--font-size-sm);
   font-weight: 500;
   transition: all var(--transition-fast);
   white-space: nowrap;
@@ -389,6 +398,9 @@ table tr {
 }
 table tr:last-child { border-bottom: none; }
 table tr:hover { background: rgba(148, 163, 184, 0.04); }
+
+table tr:nth-child(even) { background: rgba(148, 163, 184, 0.02); }
+table tr:nth-child(even):hover { background: rgba(148, 163, 184, 0.06); }
 
 table th, table td {
   padding: 11px 14px;
@@ -571,6 +583,13 @@ input[type="reset"] {
   overflow: hidden;
 }
 
+.cbi-progressbar > div:first-child {
+  height: 100%;
+  background: linear-gradient(90deg, var(--nova-cyan), var(--nova-blue));
+  border-radius: 4px;
+  transition: width var(--transition-slow);
+}
+
 .cbi-progressbar .bar {
   height: 100%;
   background: linear-gradient(90deg, var(--nova-cyan), var(--nova-blue));
@@ -598,6 +617,39 @@ input[type="reset"] {
 }
 
 .cbi-value-field { flex: 1; color: var(--text-primary); }
+
+/* ── CBI 输入样式 ── */
+.cbi-input-text,
+.cbi-input-password,
+.cbi-input-select,
+.cbi-input-textarea {
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: var(--font-size);
+  padding: 9px 12px;
+  transition: all var(--transition-fast);
+  width: 100%;
+  max-width: 400px;
+}
+
+.cbi-input-text:focus,
+.cbi-input-password:focus,
+.cbi-input-select:focus,
+.cbi-input-textarea:focus {
+  outline: none;
+  border-color: var(--nova-cyan);
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.12);
+}
+
+/* ── 章节标题 ── */
+.cbi-section-title h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+}
 
 /* ── 页脚 ── */
 #footer {
