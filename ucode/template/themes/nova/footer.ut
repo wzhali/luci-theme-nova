@@ -14,6 +14,7 @@
 </div>
 
 <script>L.require('menu-nova')</script>
+<script>L.require('nova-overview')</script>
 
 </body>
 </html>
