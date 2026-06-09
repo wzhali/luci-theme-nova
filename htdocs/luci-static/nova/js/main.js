@@ -112,38 +112,3 @@
       initSubmenus();
       addThemeToggle();
       markLoginLayout();
-    });
-  } else {
-    initSidebarToggle();
-    initSubmenus();
-    addThemeToggle();
-    markLoginLayout();
-  }
-
-  function markLoginLayout() {
-    var pageAttr = (document.body.getAttribute('data-page') || '').trim();
-    var pathParts = pageAttr.split('-');
-    var isLoginPath = (pageAttr === 'admin' || pathParts[0] === 'admin' && pathParts.length === 1);
-
-    if (isLoginPath) {
-      document.body.classList.add('login-page');
-      return;
-    }
-
-    var hasPasswordField = !!document.querySelector('input[type="password"]');
-    if (!hasPasswordField) {
-      document.body.classList.remove('login-page');
-      return;
-    }
-
-    // Delay menu check to allow async menu rendering
-    setTimeout(function() {
-      var hasMenu = !!document.getElementById('modemenu')?.querySelector('a');
-      if (!hasMenu) {
-        document.body.classList.add('login-page');
-      } else {
-        document.body.classList.remove('login-page');
-      }
-    }, 300);
-  }
-})();
